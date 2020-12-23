@@ -1,6 +1,10 @@
 # panic_buying_firearms
 Panic buying of firearms in 2020 compared to previous years: 2008-2019
 
+# GitHub Page
+
+https://math264.github.io/Firearm_Panic_Buying_Final/
+
 ## Data Topic
 
 The topic that this data will support is regarding a few factors that are currently on-going
