@@ -37,6 +37,7 @@
 		h3 {
 			font-weight: 200;
 			font-family: 'Hind Siliguri';
+			color:#f0ad4e;
 		}
 
 		p {
@@ -355,18 +356,16 @@
         // console.log(props.unemploymentData[currentYear])
         // set the fill color of layer based on its normalized data value
         // build tooltip
-        let tooltipInfo = `${props.NAME}` 
+        // let tooltipInfo = `${props.NAME}` 
         let currentDate = `firearm_sales_total_${date}`
         // console.log(props)
         if (props != undefined) {
           layer.setStyle({
             fillColor: colorize(Number(props[currentDate]))
           });
-          // tooltipInfo = `<b>${props.unemploymentData["NAME"]} County</b></br>
-          //     ${props.unemploymentData[currentYear]}% Unemployment`;
-
+          tooltipInfo = `<h3>${props["NAME"]}</h3><br><b>Total Firearms: </b>${props[currentDate]}`
         } else {
-          tooltipInfo = 'No data'
+          tooltipInfo = 'Data N/A'
           layer.setStyle({
             fillColor: 'lightgray'
           });
@@ -399,7 +398,7 @@
       legendControl.addTo(map);
 
       // select div and create legend title
-      const legend = $('.legend').html("<h3><span>2008_01</span> <br><br> Total Firearms Purchased</h3><ul>");
+      const legend = $('.legend').html("<h3><span>2008_01</span> <br><br>Total Firearms Purchased</h3><ul>");
 
         // What color is returned when the value is outside of the breaks?  
       console.log(colorize('What color is returned?'))
@@ -420,7 +419,7 @@
       }
       // Add legend item for missing data
 			$('.legend ul').append(`<li><span style="background:lightgray"></span>
-                              Data not available</li>`)
+                             Data N/A</li>`)
       // close legend unordered list
       legend.append("</ul>");
 
@@ -468,8 +467,8 @@
 	  // Create some empty variables
       let year = ''
       let month = ''
-      const x = Math.floor(slider/12) // divide by twelve
-      const y = slider%12 // find the remainder of a division by 12
+      const x = Math.floor(slider/13) // divide by twelve
+      const y = slider%13 // find the remainder of a division by 12
 	console.log(x)
 	  // Modify for all years
       if (x <= 0) {
@@ -501,10 +500,10 @@
 	  
 
 	  // Modify to include 12, i.e., if remainder is 0...
-      if (y < 10) { 
-        month = `0${y}`
-	  } else if (y == 0){
-		  month = 12}
+      if (y == 0) { 
+        month = 12
+	  } else if (y < 10){
+		  month = `0${y}`}
 	  else {
         month = `${y}`
       }
